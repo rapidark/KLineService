@@ -12,8 +12,7 @@ public class Constants {
 	public final static double ZT_THRESHOLD = 9.9;
 	public static final String CLASSES = "classes";
 	public static final String WEB_INF = "WEB-INF";
-	public static String[] STRATEGIES = { "MRZT", "YZZT", "LSXG", "LXXD", "QSG",
-			"MN", "QSGHTMA5", "QSGHTMA10" };
+	public static String[] STRATEGIES = { "MRZT", "YZZT", "LSXG", "LXXD", "QSG", "MN", "QSGHTMA5", "QSGHTMA10" };
 	public final static String LATEST_SPJ = "latestSPJ";
 
 	// strategies.add("MRZT");

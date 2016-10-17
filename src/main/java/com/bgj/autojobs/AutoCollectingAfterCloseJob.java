@@ -30,48 +30,38 @@ public class AutoCollectingAfterCloseJob implements Job {
 		NotificationMail notification = new NotificationMail();
 		EventRecorder.recordEvent(this.getClass(), "开始盘后处理");
 		if (StockMarketUtil.isMarketRest()) {
-			EventRecorder.recordEvent(this.getClass(),
-					"今天假日休市,结束盘后处理");
+			EventRecorder.recordEvent(this.getClass(), "今天假日休市,结束盘后处理");
 			return;
 		}
 		EventRecorder.recordEvent(this.getClass(), "Start to collect data");
 		collectStockDailyInfo();
 		EventRecorder.recordEvent(this.getClass(), "Finish to collect data");
 
-		EventRecorder.recordEvent(this.getClass(),
-				"Start to collect latest SPJ");
+		EventRecorder.recordEvent(this.getClass(), "Start to collect latest SPJ");
 		StockCurrentPriceHolder.getInstance().initTodayLatestCurrentPrice();
-		System.out.println(StockCurrentPriceHolder.getInstance().getLatestSPJ(
-				"000016"));
-		EventRecorder.recordEvent(this.getClass(),
-				"Start to collect latest SPJ");
+		System.out.println(StockCurrentPriceHolder.getInstance().getLatestSPJ("000016"));
+		EventRecorder.recordEvent(this.getClass(), "Start to collect latest SPJ");
 
 		try {
 			Date today = new Date();
 			EventRecorder.recordEvent(this.getClass(), "Start to analyse MRZT");
 			MRZTDataAnalyst.analyse(today);
-			EventRecorder
-					.recordEvent(this.getClass(), "Finish to analyse MRZT");
+			EventRecorder.recordEvent(this.getClass(), "Finish to analyse MRZT");
 
 			EventRecorder.recordEvent(this.getClass(), "Start to analyse YZZT");
 			YZZTDataAnalyst.analyse(today);
-			EventRecorder
-					.recordEvent(this.getClass(), "Finish to analyse YZZT");
+			EventRecorder.recordEvent(this.getClass(), "Finish to analyse YZZT");
 
 			EventRecorder.recordEvent(this.getClass(), "Start to analyse LXXD");
 			LXXDDataAnalyst.analyse(today);
-			EventRecorder
-					.recordEvent(this.getClass(), "Finish to analyse LXXD");
+			EventRecorder.recordEvent(this.getClass(), "Finish to analyse LXXD");
 
 			EventRecorder.recordEvent(this.getClass(), "Start to analyse ZJXG");
 			ZJXGDataAnalyst.analyse(today);
-			EventRecorder
-					.recordEvent(this.getClass(), "Finish to analyse ZJXG");
-			EventRecorder.recordEvent(ManulAnalysisJob.class,
-					"Start to analyse QSG");
+			EventRecorder.recordEvent(this.getClass(), "Finish to analyse ZJXG");
+			EventRecorder.recordEvent(ManulAnalysisJob.class, "Start to analyse QSG");
 			QSGDataAnalyst.analyse(today);
-			EventRecorder.recordEvent(ManulAnalysisJob.class,
-					"Finish to analyse QSG");
+			EventRecorder.recordEvent(ManulAnalysisJob.class, "Finish to analyse QSG");
 
 			notification.setSuccessful(true);
 		} catch (KLineException e) {
@@ -104,13 +94,11 @@ public class AutoCollectingAfterCloseJob implements Job {
 			String value = GhlhDAO.selectSingleValue(sql);
 			int count = Integer.parseInt(value);
 			if (count != 0) {
-				EventRecorder.recordEvent(this.getClass(), "第 " + (i + 1)
-						+ "收集成功");
+				EventRecorder.recordEvent(this.getClass(), "第 " + (i + 1) + "收集成功");
 				break;
 			} else {
 				if (i == 4) {
-					EventRecorder.recordEvent(this.getClass(), "第 " + (i + 1)
-							+ "收集 还是没有成功!");
+					EventRecorder.recordEvent(this.getClass(), "第 " + (i + 1) + "收集 还是没有成功!");
 				}
 			}
 		}

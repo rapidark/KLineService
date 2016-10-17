@@ -1,5 +1,6 @@
 package com.bgj.util;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -29,11 +30,9 @@ public class EastMoneyUtil {
 			result.setLowestPrice(Double.parseDouble(stockInfoPieces[7]));
 			result.setCjl(Double.parseDouble(stockInfoPieces[9]));
 			result.setZde(Double.parseDouble(stockInfoPieces[10]));
-			String sZdf = stockInfoPieces[11].substring(0,
-					stockInfoPieces[11].length() - 1);
+			String sZdf = stockInfoPieces[11].substring(0, stockInfoPieces[11].length() - 1);
 			result.setZdf(Double.parseDouble(sZdf));
-			String sHsl = stockInfoPieces[23].substring(0,
-					stockInfoPieces[23].length() - 1);
+			String sHsl = stockInfoPieces[23].substring(0, stockInfoPieces[23].length() - 1);
 			result.setHsl(Double.parseDouble(sHsl));
 		} catch (Exception ex) {
 			logger.error("Parse Stock throw", ex);
@@ -41,16 +40,20 @@ public class EastMoneyUtil {
 		return result;
 	}
 
+	static String url(int pageSize, int marketCode) {
+		String pattern = "http://hqdigi2.eastmoney.com/EM_Quote2010NumericApplication/index.aspx?"
+				+ "type=s&sortType=C&sortRule=-1&pageSize={0}&page=1&jsName=quote_123"
+				+ "&style={1}&_g=0.5124112195048514";
+		String url = MessageFormat.format(pattern, pageSize, marketCode);
+		System.out.println(url);
+		return url;
+	}
+	
 	public static List<StockQuotesBean> collectData(int pageSize, int marketCode) {
 		List<StockQuotesBean> result = new ArrayList<StockQuotesBean>();
-		String url = "http://hqdigi2.eastmoney.com/EM_Quote2010NumericApplication/index.aspx?"
-				+ "type=s&sortType=C&sortRule=-1&pageSize="
-				+ pageSize
-				+ "&page=1&jsName=quote_123"
-				+ "&style="
-				+ marketCode
-				+ "&_g=0.5124112195048514";
+		String url = url(pageSize, marketCode);
 		String content = HttpUtil.accessInternet(url);
+		System.out.println(content);
 		content = content.substring(content.indexOf("[") + 1);
 		content = content.substring(0, content.indexOf("]"));
 		while (content.indexOf("\",\"") > 0) {
@@ -68,6 +71,7 @@ public class EastMoneyUtil {
 
 	public static void main(String[] args) {
 		int count = 30;
+		
 		List<StockQuotesBean> list = EastMoneyUtil.collectData(count, Constants.SH_MARKET_CODE);
 		list = EastMoneyUtil.collectData(count, Constants.SZ_MARKET_CODE);
 
