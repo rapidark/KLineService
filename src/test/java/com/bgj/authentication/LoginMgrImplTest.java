@@ -14,12 +14,12 @@ public class LoginMgrImplTest {
 		originalToken.setOpenId("oLVPpjqs9BhvzwPj5A-vTYAX3GLc");
 		originalToken.setCity("Shenzhen");
 		originalToken.setCountry("CN");
-		originalToken.setNickName("∑Ω±∂");
+		originalToken.setNickName("ÊñπÂÄç");
 		originalToken.setProvince("Guangdong");
 		originalToken.setSex(1);
 
 		LoginMgrImpl loginMgr = LoginMgrImpl.getInstance();
-		String json = "    { \"openid\": \"oLVPpjqs9BhvzwPj5A-vTYAX3GLc\", \"nickname\": \"∑Ω±∂\","
+		String json = "    { \"openid\": \"oLVPpjqs9BhvzwPj5A-vTYAX3GLc\", \"nickname\": \"ÊñπÂÄç\","
 				+ "       \"sex\": 1, \"language\": \"zh_CN\", \"city\": \"Shenzhen\", \"province\":"
 				+ "       \"Guangdong\", \"country\": \"CN\", \"headimgurl\":"
 				+ "       \"http://wx.qlogo.cn/mmopen/utpKYf69VAbCRDRlbUsPsdQN38DoibCkrU6SAMCSNx558eTaLVM8PyM6jlEGzOrH67hyZibIZPXu4BK1XNWzSXB3Cs4qpBBg18/0\""

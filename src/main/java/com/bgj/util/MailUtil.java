@@ -29,7 +29,7 @@ public class MailUtil {
 
 
 	/**
-	 * ´Ë¶Î´úÂëÓÃÀ´·¢ËÍÆÕÍ¨µç×ÓÓÊ¼ş
+	 * æ­¤æ®µä»£ç ç”¨æ¥å‘é€æ™®é€šç”µå­é‚®ä»¶
 	 */
 	public static void send(NotificationMail notification) throws Exception {
 		try {
@@ -38,24 +38,24 @@ public class MailUtil {
 				public PasswordAuthentication getPasswordAuthentication() {
 					return new PasswordAuthentication(username, password);
 				}
-			}; // ½øĞĞÓÊ¼ş·şÎñÆ÷ÓÃ»§ÈÏÖ¤
+			}; // è¿›è¡Œé‚®ä»¶æœåŠ¡å™¨ç”¨æˆ·è®¤è¯
 			props.put("mail.smtp.host", host);
 			props.put("mail.smtp.auth", "true");
 			Session session = Session.getDefaultInstance(props, auth);
-			// ÉèÖÃsession,ºÍÓÊ¼ş·şÎñÆ÷½øĞĞÍ¨Ñ¶¡£
+			// è®¾ç½®session,å’Œé‚®ä»¶æœåŠ¡å™¨è¿›è¡Œé€šè®¯ã€‚
 			MimeMessage message = new MimeMessage(session);
-			// message.setContent("foobar, "application/x-foobar"); // ÉèÖÃÓÊ¼ş¸ñÊ½
-			message.setSubject(notification.getSubject()); // ÉèÖÃÓÊ¼şÖ÷Ìâ
-			message.setText(notification.getBody()); // ÉèÖÃÓÊ¼şÕıÎÄ
-			message.setHeader(mail_head_name, mail_head_value); // ÉèÖÃÓÊ¼ş±êÌâ
+			// message.setContent("foobar, "application/x-foobar"); // è®¾ç½®é‚®ä»¶æ ¼å¼
+			message.setSubject(notification.getSubject()); // è®¾ç½®é‚®ä»¶ä¸»é¢˜
+			message.setText(notification.getBody()); // è®¾ç½®é‚®ä»¶æ­£æ–‡
+			message.setHeader(mail_head_name, mail_head_value); // è®¾ç½®é‚®ä»¶æ ‡é¢˜
 
-			message.setSentDate(new Date()); // ÉèÖÃÓÊ¼ş·¢ËÍÈÕÆÚ
+			message.setSentDate(new Date()); // è®¾ç½®é‚®ä»¶å‘é€æ—¥æœŸ
 			Address address = new InternetAddress(mail_from, personalName);
-			message.setFrom(address); // ÉèÖÃÓÊ¼ş·¢ËÍÕßµÄµØÖ·
+			message.setFrom(address); // è®¾ç½®é‚®ä»¶å‘é€è€…çš„åœ°å€
 
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress("lqj.liu@qq.com"));
 
-			Transport.send(message); // ·¢ËÍÓÊ¼ş
+			Transport.send(message); // å‘é€é‚®ä»¶
 			System.out.println("send success!");
 		} catch (Exception ex) {
 			ex.printStackTrace();

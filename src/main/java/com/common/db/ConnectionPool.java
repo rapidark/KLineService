@@ -122,7 +122,7 @@ public class ConnectionPool {
 		try {
 			String db_url = "jdbc:mysql://"
 					+ DB_URL
-					+ ":3306/bgj?user=bgj&password=KLine123&useUnicode=true&characterEncoding=UTF-8";
+					+ ":3306/bgj?user=root&password=root&useUnicode=true&characterEncoding=UTF-8";
 			
 			if(DB_FULL_URL != null){
 				db_url = DB_FULL_URL;
@@ -151,6 +151,10 @@ public class ConnectionPool {
 		if (db_url != null && !db_url.equals("")) {
 			DB_FULL_URL = db_url;
 		}
+	}
+	
+	public static void main(String[] args) throws SQLException {
+		System.out.println(new ConnectionPool().getConnection());
 	}
 
 }

@@ -1,4 +1,4 @@
-package com.bgj.authentication;
+Ôªøpackage com.bgj.authentication;
 
 import org.apache.log4j.Logger;
 import org.json.JSONException;
@@ -29,7 +29,7 @@ public class LoginMgrImpl {
 	}
 
 	Token parseWeChatProfileToToken(String json) {
-		json = "    { \"openid\": \"oLVPpjqs9BhvzwPj5A-vTYAX3GLc\", \"nickname\": \"∑Ω±∂\","
+		json = "    { \"openid\": \"oLVPpjqs9BhvzwPj5A-vTYAX3GLc\", \"nickname\": \"Î••‡µê\","
 				+ "       \"sex\": 1, \"language\": \"zh_CN\", \"city\": \"Shenzhen\", \"province\":"
 				+ "       \"Guangdong\", \"country\": \"CN\", \"headimgurl\":"
 				+ "       \"http://wx.qlogo.cn/mmopen/utpKYf69VAbCRDRlbUsPsdQN38DoibCkrU6SAMCSNx558eTaLVM8PyM6jlEGzOrH67hyZibIZPXu4BK1XNWzSXB3Cs4qpBBg18/0\""
@@ -71,7 +71,7 @@ public class LoginMgrImpl {
 		 *       weChatProfileJson =
 		 *       WeChatAPI.getProfile(loginBean.getWebchattoken);
 		 * 
-		 *       { "openid": "oLVPpjqs9BhvzwPj5A-vTYAX3GLc", "nickname": "∑Ω±∂",
+		 *       { "openid": "oLVPpjqs9BhvzwPj5A-vTYAX3GLc", "nickname": "Î••‡µê",
 		 *       "sex": 1, "language": "zh_CN", "city": "Shenzhen", "province":
 		 *       "Guangdong", "country": "CN", "headimgurl":
 		 *       "http://wx.qlogo.cn/mmopen/utpKYf69VAbCRDRlbUsPsdQN38DoibCkrU6SAMCSNx558eTaLVM8PyM6jlEGzOrH67hyZibIZPXu4BK1XNWzSXB3Cs4qpBBg18/0"

@@ -40,8 +40,7 @@ public class KLineServlet extends HttpServlet {
 		super.init();
 		String db_url = this.getServletConfig().getInitParameter("DB_URL");
 		ConnectionPool.setDBURL(db_url);
-		String stockPath = this.getServletConfig().getInitParameter(
-				"Stock_Info");
+		String stockPath = this.getServletConfig().getInitParameter("Stock_Info");
 		StrateFilePath.getInstance().setRootPath(stockPath);
 		BgjAutoQuartzServer.getInstance().startJob();
 	}

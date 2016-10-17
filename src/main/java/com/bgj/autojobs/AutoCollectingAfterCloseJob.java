@@ -28,10 +28,10 @@ public class AutoCollectingAfterCloseJob implements Job {
 
 	public void execute(JobExecutionContext arg0) throws JobExecutionException {
 		NotificationMail notification = new NotificationMail();
-		EventRecorder.recordEvent(this.getClass(), "¿ªÊ¼ÅÌºó´¦Àí");
+		EventRecorder.recordEvent(this.getClass(), "å¼€å§‹ç›˜åå¤„ç†");
 		if (StockMarketUtil.isMarketRest()) {
 			EventRecorder.recordEvent(this.getClass(),
-					"½ñÌì¼ÙÈÕĞİÊĞ,½áÊøÅÌºó´¦Àí");
+					"ä»Šå¤©å‡æ—¥ä¼‘å¸‚,ç»“æŸç›˜åå¤„ç†");
 			return;
 		}
 		EventRecorder.recordEvent(this.getClass(), "Start to collect data");
@@ -85,7 +85,7 @@ public class AutoCollectingAfterCloseJob implements Job {
 		} catch (Exception e) {
 			logger.error("Send Notification : ", e);
 		}
-		EventRecorder.recordEvent(this.getClass(), "½áÊøÅÌºó´¦Àí");
+		EventRecorder.recordEvent(this.getClass(), "ç»“æŸç›˜åå¤„ç†");
 	}
 
 	private void collectStockDailyInfo() {
@@ -94,7 +94,7 @@ public class AutoCollectingAfterCloseJob implements Job {
 	}
 
 	private void collectStockDailyInfo(Date now) {
-		EventRecorder.recordEvent(this.getClass(), "¿ªÊ¼ÊÕ¼¯ÊÕÅÌÊı¾İ");
+		EventRecorder.recordEvent(this.getClass(), "å¼€å§‹æ”¶é›†æ”¶ç›˜æ•°æ®");
 		String today = DateUtil.formatDay(now);
 		for (int i = 0; i < 5; i++) {
 			new DataCollector().collectDailyInfo(now, false);
@@ -104,17 +104,17 @@ public class AutoCollectingAfterCloseJob implements Job {
 			String value = GhlhDAO.selectSingleValue(sql);
 			int count = Integer.parseInt(value);
 			if (count != 0) {
-				EventRecorder.recordEvent(this.getClass(), "µÚ " + (i + 1)
-						+ "ÊÕ¼¯³É¹¦");
+				EventRecorder.recordEvent(this.getClass(), "ç¬¬ " + (i + 1)
+						+ "æ”¶é›†æˆåŠŸ");
 				break;
 			} else {
 				if (i == 4) {
-					EventRecorder.recordEvent(this.getClass(), "µÚ " + (i + 1)
-							+ "ÊÕ¼¯ »¹ÊÇÃ»ÓĞ³É¹¦!");
+					EventRecorder.recordEvent(this.getClass(), "ç¬¬ " + (i + 1)
+							+ "æ”¶é›† è¿˜æ˜¯æ²¡æœ‰æˆåŠŸ!");
 				}
 			}
 		}
-		EventRecorder.recordEvent(this.getClass(), "½áÊøÊÕ¼¯ÊÕÅÌÊı¾İ");
+		EventRecorder.recordEvent(this.getClass(), "ç»“æŸæ”¶é›†æ”¶ç›˜æ•°æ®");
 	}
 
 	public static void main(String[] args) {

@@ -19,7 +19,7 @@ public class StrategyAnalysisJob implements Job {
 	private static Logger logger = Logger.getLogger(StrategyAnalysisJob.class);
 
 	public void execute(JobExecutionContext arg0) throws JobExecutionException {
-		String message = "¿ªÊ¼·ÖÎöµ±ÈÕ²ßÂÔÊı¾İ";
+		String message = "å¼€å§‹åˆ†æå½“æ—¥ç­–ç•¥æ•°æ®";
 		EventRecorder.recordEvent(this.getClass(), message);
 		if (StockMarketUtil.isMarketRest()) {
 			return;
@@ -35,7 +35,7 @@ public class StrategyAnalysisJob implements Job {
 		} catch (KLineException e) {
 			logger.error("analyse MRZT throw", e);
 		}
-		message = "½áÊø·ÖÎöµ±ÈÕ²ßÂÔÊı¾İ";
+		message = "ç»“æŸåˆ†æå½“æ—¥ç­–ç•¥æ•°æ®";
 		EventRecorder.recordEvent(this.getClass(), message);
 	}
 

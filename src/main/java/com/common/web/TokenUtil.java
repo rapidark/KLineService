@@ -132,7 +132,7 @@ public class TokenUtil {
 	public static void main(String[] args) {
 		Token token = new Token();
 		token.setOpenId("oLVPpjqs9BhvzwPj5A-vTYAX3GLc");
-		token.setNickName("·½±¶");
+		token.setNickName("æ¯³ãƒ ç¥¼");
 		// token.setProvince("Guangdong");
 		token.setCity("Shenzhen");
 		token.setCountry("CN");

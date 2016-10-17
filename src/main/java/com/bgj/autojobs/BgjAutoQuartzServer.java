@@ -21,10 +21,8 @@ public class BgjAutoQuartzServer {
 
 	private void scheduleJob(int hour, int mins, String jobName, Class jobClass) {
 		try {
-			JobDetail job = new JobDetail(jobName + "Job",
-					Scheduler.DEFAULT_GROUP, jobClass);
-			Trigger trigger = TriggerUtils.makeDailyTrigger(jobName + "Triger",
-					hour, mins);
+			JobDetail job = new JobDetail(jobName + "Job", Scheduler.DEFAULT_GROUP, jobClass);
+			Trigger trigger = TriggerUtils.makeDailyTrigger(jobName + "Triger", hour, mins);
 			scheduler.scheduleJob(job, trigger);
 		} catch (SchedulerException ex) {
 			logger.error("Make auto job : " + jobName + "throw: ", ex);
@@ -34,8 +32,7 @@ public class BgjAutoQuartzServer {
 	private BgjAutoQuartzServer() {
 		try {
 			scheduler = StdSchedulerFactory.getDefaultScheduler();
-			scheduleJob(15, 1, "AutoCollectingAfterCloseJob",
-					AutoCollectingAfterCloseJob.class);
+			scheduleJob(14, 43, "AutoCollectingAfterCloseJob", AutoCollectingAfterCloseJob.class);
 		} catch (SchedulerException ex) {
 			logger.error("Make auto trade scheduler throw: ", ex);
 		}
@@ -59,7 +56,7 @@ public class BgjAutoQuartzServer {
 	
 	public static void main(String[] args){
 		BgjAutoQuartzServer.getInstance().startJob();
-		BgjAutoQuartzServer.getInstance().stopJob();
+//		BgjAutoQuartzServer.getInstance().stopJob();
 		
 	}
 }
