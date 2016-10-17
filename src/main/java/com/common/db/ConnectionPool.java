@@ -106,7 +106,7 @@ public class ConnectionPool {
 			} catch (Exception ex1) {
 				ex1.printStackTrace();
 			}
-			String url = "jdbc:mysql://localhost:3306/carucrm?user=root&password=pass&useUnicode=true&characterEncoding=UTF-8";
+			String url = "jdbc:mysql://localhost:3306/bgj?user=root&password=root&useUnicode=true&characterEncoding=UTF-8";
 			Connection connection = DriverManager.getConnection(url);
 			System.out
 					.println("Got single connection through accessing db directly");
